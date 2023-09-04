@@ -1,0 +1,2 @@
+in byte_stream.hh, remaining_capacity() is a method of ByteStream, here what to return?
+totalCapacity-sizeByte_Stream or totalCapacity-sizeByte_Stream-sizeStream_reassembler?
