@@ -54,6 +54,8 @@ class StreamReassembler {
 
     //! The acknowledge index of the stream, i.e., the index of the next interested substring
     size_t ack_index() const;
+    // string getByteStream();
+
 };
 
 #endif  // SPONGE_LIBSPONGE_STREAM_REASSEMBLER_HH

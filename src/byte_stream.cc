@@ -14,22 +14,20 @@ size_t ByteStream::write(const string &data) {
   writable = min(writable, (int)data.size());
   for (int i = 0; i < writable; i++) {
     _buffer.push_back(data[i]);
-//  cout << data[i];
-    _bytesWritten++;
+    _bytesWritten+=1;
   }
- // cout << " "<< data << " " << writable << endl;
   return writable;
 }
 
 //! \param[in] len bytes will be copied from the output side of the buffer
 string ByteStream::peek_output(const size_t len) const {
   string result = "";
-  const char* ch = &_buffer.front();
+  // const char* ch = &_buffer.front();
   int peekSize = (len>_buffer.size()) ? _buffer.size():len;
   for(int i = 0; i < peekSize ;i++){
     result.push_back(_buffer[i]);
   }
-  cout << result << " "<<len << " " << peekSize<< "\n";
+  // cout << result << " "<<len << " " << peekSize<< "\n";
   return result;
 }
 
@@ -66,4 +64,3 @@ size_t ByteStream::bytes_written() const { return _bytesWritten; }
 size_t ByteStream::bytes_read() const { return _bytesRead;  }
 
 size_t ByteStream::remaining_capacity() const { return _capacity - _buffer.size(); }
-
