@@ -20,6 +20,7 @@ class StreamReassembler {
     // size_t _bufferEmpty;  //!< The number of bytes that can be pushed in the local buffer
     ByteStream _output;  //!< The reassembled in-order byte stream
     int _ackIndex;  //!< The index of the next interested substring
+    int eofACK;
 
   public:
     //! \brief Construct a `StreamReassembler` that will store up to `capacity` bytes.
@@ -54,7 +55,20 @@ class StreamReassembler {
 
     //! The acknowledge index of the stream, i.e., the index of the next interested substring
     size_t ack_index() const;
+    void writeBack();
     // string getByteStream();
+    string getByteStream(){
+      cout << "output: " << _output.bytes_written() << endl;
+      cout << "unassembled: " << _unassembledBytes << endl;
+      cout << "bufferSize " << _output.buffer_size() << endl;
+      cout << "peekOutput " << _output.peek_output(10) << endl;
+      cout << "bytes written " << _output.bytes_written() << endl;
+      cout << "eof " << _output.eof() << endl;
+      return "";
+    }
+    void read(){
+      _output.read(1);
+    }
 
 };
 

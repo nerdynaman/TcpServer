@@ -5,13 +5,15 @@ LL::LL()
     this->packetIndex = -1;
     this->next = NULL;
     this->data = "";
+    this->eof = 0;
     // this->segmentIndex = -1;
 }
-LL::LL(int packetIndex, std::string data)
+LL::LL(int packetIndex, std::string data, int eof)
 {
     this->packetIndex = packetIndex;
     this->next = NULL;
     this->data = data;
+    this->eof = eof;
 }
 void LL::setNext(LL *next)
 {
@@ -34,6 +36,9 @@ void LL::setPacketIndex(int packetIndex)
 int LL::getPacketIndex()
 {
     return this->packetIndex;
+}
+int LL::getEOF(){
+    return this->eof;
 }
 string LL::getData()
 {
